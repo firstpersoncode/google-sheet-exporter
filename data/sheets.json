@@ -1,0 +1,18 @@
+{
+  "acc-1": [
+    {
+      "id": "acc-1-sheet-1",
+      "name": "Sheet 1"
+    },
+    {
+      "id": "acc-1-sheet-2",
+      "name": "Sheet 2"
+    }
+  ],
+  "acc-2": [
+    {
+      "id": "acc-2-sheet-1",
+      "name": "Sheet 1"
+    }
+  ]
+}
