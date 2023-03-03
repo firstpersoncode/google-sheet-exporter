@@ -1,20 +1,21 @@
 import { useMemo, useState } from "react";
-import { Check, Close, ExpandMore, Search } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  IconButton,
-  InputAdornment,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Popover,
-  SvgIcon,
-  TextField,
-  Typography,
-} from "@mui/material";
+import Check from "@mui/icons-material/Check";
+import Close from "@mui/icons-material/Close";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import Search from "@mui/icons-material/Search";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Popover from "@mui/material/Popover";
+import SvgIcon from "@mui/material/SvgIcon";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
 export default function Select({
   label,
@@ -94,6 +95,7 @@ export default function Select({
         variant="outlined"
         fullWidth
         onClick={toggleOption}
+        onTouchEnd={toggleOption}
         sx={{
           justifyContent: "space-between",
           textTransform: "unset",
@@ -116,6 +118,7 @@ export default function Select({
             {value && onDelete ? (
               <Close
                 onClick={handleDelete}
+                onTouchEnd={handleDelete}
                 size="small"
                 sx={{ color: "#848484" }}
               />
@@ -123,6 +126,7 @@ export default function Select({
               <ExpandMore
                 size="small"
                 onClick={toggleOption}
+                onTouchEnd={toggleOption}
                 sx={{ color: "#262626", width: "20px", height: "20px" }}
               />
             )}
@@ -184,6 +188,7 @@ export default function Select({
               <ListItemButton
                 disabled={o.disabled}
                 onClick={handleChange(o.value)}
+                onTouchEnd={handleChange(o.value)}
               >
                 {o.icon && (
                   <ListItemIcon>

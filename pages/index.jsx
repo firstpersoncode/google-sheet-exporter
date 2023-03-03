@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 
 import nodes from "data/nodes.json";
 import { useAppContext } from "context";

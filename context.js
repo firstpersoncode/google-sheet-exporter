@@ -58,7 +58,7 @@ export function useAppState(pageProps) {
 
   async function signIn() {
     try {
-      const res = await fetch(`${API_ENDPOINT}/accounts`);
+      const res = await fetch(`${process.env.API_ENDPOINT}/accounts`);
       const data = await res.json();
       setContext((v) => ({ ...v, accounts: data }));
     } catch (err) {

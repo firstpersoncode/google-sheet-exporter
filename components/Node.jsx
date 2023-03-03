@@ -1,6 +1,7 @@
 import { useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
-import { Card, SvgIcon } from "@mui/material";
+import Card from "@mui/material/Card";
+import SvgIcon from "@mui/material/SvgIcon";
 import Xarrow, { useXarrow } from "react-xarrows";
 import Draggable from "react-draggable";
 

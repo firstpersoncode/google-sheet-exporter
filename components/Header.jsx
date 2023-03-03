@@ -1,5 +1,7 @@
-import { DeleteOutline } from "@mui/icons-material";
-import { Box, IconButton, Typography } from "@mui/material";
+import DeleteOutline from "@mui/icons-material/DeleteOutline";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 
 export default function Header({ icon, title, onDelete }) {
   return (
@@ -21,6 +23,7 @@ export default function Header({ icon, title, onDelete }) {
       </Typography>
       <IconButton
         onClick={onDelete}
+        onTouchEnd={onDelete}
         sx={{
           padding: "8px",
           backgroundColor: "#F0F0F0",

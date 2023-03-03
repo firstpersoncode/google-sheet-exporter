@@ -1,8 +1,16 @@
-import { Box, Button, SvgIcon, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import SvgIcon from "@mui/material/SvgIcon";
+import Typography from "@mui/material/Typography";
 
 import Logo from "assets/Logo.svg";
 
 export default function GoogleAuth({ onSignIn }) {
+  function handleSignIn(e) {
+    e.stopPropagation();
+    onSignIn();
+  }
+
   return (
     <Box sx={{ padding: "12px" }}>
       <Box sx={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
@@ -46,7 +54,8 @@ export default function GoogleAuth({ onSignIn }) {
           borderRadius: "4px",
           padding: "10px",
         }}
-        onClick={onSignIn}
+        onClick={handleSignIn}
+        onTouchEnd={handleSignIn}
       >
         Connect
       </Button>
