@@ -24,14 +24,14 @@ export default function Exporter({ node }) {
   const fetchExported = useCallback(async () => {
     if (!accounts.length) return;
     try {
-      const res = await fetch(`/api/export/${node.id}`);
+      const res = await fetch(`${API_ENDPOINT}/export/${node.id}`);
       const data = await res.json();
       if (!res.ok) throw data;
 
       setExported(data.exported);
       const arrRes = await Promise.all([
-        fetch(`/api/accounts/sheets/${data.account}`),
-        fetch(`/api/accounts/tabs/${data.sheet}`),
+        fetch(`${API_ENDPOINT}/accounts/sheets/${data.account}`),
+        fetch(`${API_ENDPOINT}/accounts/tabs/${data.sheet}`),
       ]);
       const [resSheets, resTabs] = arrRes;
       const sheets = await resSheets.json();
@@ -66,7 +66,7 @@ export default function Exporter({ node }) {
     setForm({ account, sheet: null, tab: null });
     setErrors({ account: undefined, sheet: undefined, tab: undefined });
     try {
-      const res = await fetch(`/api/accounts/sheets/${account.id}`);
+      const res = await fetch(`${API_ENDPOINT}/accounts/sheets/${account.id}`);
       const data = await res.json();
       setOptions({ sheets: data, tabs: [] });
     } catch (err) {
@@ -84,7 +84,7 @@ export default function Exporter({ node }) {
     setForm((v) => ({ ...v, sheet, tab: null }));
     setErrors((v) => ({ ...v, sheet: undefined, tab: undefined }));
     try {
-      const res = await fetch(`/api/accounts/tabs/${sheet.id}`);
+      const res = await fetch(`${API_ENDPOINT}/accounts/tabs/${sheet.id}`);
       const data = await res.json();
       setOptions((v) => ({ ...v, tabs: data }));
     } catch (err) {
@@ -119,7 +119,10 @@ export default function Exporter({ node }) {
     if (!isValid) return;
 
     try {
-      const res = await fetch("/api/export", { method: "POST", body: form });
+      const res = await fetch(`${API_ENDPOINT}/export`, {
+        method: "POST",
+        body: form,
+      });
       const data = await res.json();
       setExported(data.exported);
     } catch (err) {
