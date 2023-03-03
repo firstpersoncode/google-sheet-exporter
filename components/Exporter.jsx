@@ -122,6 +122,7 @@ export default function Exporter({ node }) {
 
   async function handleExport(e) {
     e.preventDefault();
+    e.stopPropagation();
     const isValid = !Boolean(Object.keys(validate()).length);
     if (!isValid) return;
 
@@ -204,6 +205,7 @@ export default function Exporter({ node }) {
         variant="contained"
         fullWidth
         onClick={handleExport}
+        onTouchEnd={handleExport}
         sx={{
           textTransform: "unset",
           fontSize: "10px",
