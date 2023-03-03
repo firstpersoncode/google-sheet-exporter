@@ -101,6 +101,7 @@ export default function Select({
           fontSize: "11px",
           color: "#262626",
           textAlign: "left",
+          height: "36px",
           ...sx,
         }}
         endIcon={
@@ -113,9 +114,17 @@ export default function Select({
           >
             {endAdornment}
             {value && onDelete ? (
-              <Close onClick={handleDelete} size="small" />
+              <Close
+                onClick={handleDelete}
+                size="small"
+                sx={{ color: "#848484" }}
+              />
             ) : (
-              <ExpandMore size="small" onClick={toggleOption} />
+              <ExpandMore
+                size="small"
+                onClick={toggleOption}
+                sx={{ color: "#262626", width: "20px", height: "20px" }}
+              />
             )}
           </Box>
         }

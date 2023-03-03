@@ -176,6 +176,7 @@ export default function Exporter({ node }) {
                 value: t.id,
               }))}
               sx={{
+                height: "auto",
                 backgroundColor: "#F5F5F5",
                 borderRadius: "24px",
                 "& .MuiTypography-root": { color: "#848484" },
