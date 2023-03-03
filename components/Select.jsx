@@ -113,13 +113,9 @@ export default function Select({
           >
             {endAdornment}
             {value && onDelete ? (
-              <IconButton size="small" onClick={handleDelete}>
-                <Close />
-              </IconButton>
+              <Close onClick={handleDelete} size="small" />
             ) : (
-              <IconButton size="small" onClick={toggleOption}>
-                <ExpandMore />
-              </IconButton>
+              <ExpandMore size="small" onClick={toggleOption} />
             )}
           </Box>
         }
