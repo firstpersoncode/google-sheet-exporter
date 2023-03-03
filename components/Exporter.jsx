@@ -26,23 +26,23 @@ export default function Exporter({ node }) {
     try {
       const res = await fetch(`/api/export/${node.id}`);
       const data = await res.json();
-      if (data) {
-        setExported(data.exported);
-        const arrRes = await Promise.all([
-          fetch(`/api/accounts/sheets/${data.account}`),
-          fetch(`/api/accounts/tabs/${data.sheet}`),
-        ]);
-        const [resSheets, resTabs] = arrRes;
-        const sheets = await resSheets.json();
-        const tabs = await resTabs.json();
-        setOptions({ sheets, tabs });
-        const account = accounts.find((a) => a.id === data.account);
-        const sheet = sheets.find((a) => a.id === data.sheet);
-        const tab = tabs.find((a) => a.id === data.tab);
-        setForm({ account, sheet, tab });
-      }
+      if (!res.ok) throw data;
+
+      setExported(data.exported);
+      const arrRes = await Promise.all([
+        fetch(`/api/accounts/sheets/${data.account}`),
+        fetch(`/api/accounts/tabs/${data.sheet}`),
+      ]);
+      const [resSheets, resTabs] = arrRes;
+      const sheets = await resSheets.json();
+      const tabs = await resTabs.json();
+      setOptions({ sheets, tabs });
+      const account = accounts.find((a) => a.id === data.account);
+      const sheet = sheets.find((a) => a.id === data.sheet);
+      const tab = tabs.find((a) => a.id === data.tab);
+      setForm({ account, sheet, tab });
     } catch (err) {
-      console.error(err.message || err);
+      console.error(err);
     }
   }, [accounts, node.id]);
 
