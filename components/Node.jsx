@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import { Card, SvgIcon } from "@mui/material";
 import Xarrow, { useXarrow } from "react-xarrows";
@@ -28,6 +28,7 @@ const bodies = {
 };
 
 export default function Node({ node }) {
+  const nodeRef = useRef();
   const updateXarrow = useXarrow();
   const { removeNode } = useAppContext();
   const { title, icon, Body } = useMemo(
@@ -44,8 +45,14 @@ export default function Node({ node }) {
   }
 
   return (
-    <Draggable bounds="parent" onDrag={updateXarrow} onStop={updateXarrow}>
+    <Draggable
+      nodeRef={nodeRef}
+      bounds="parent"
+      onDrag={updateXarrow}
+      onStop={updateXarrow}
+    >
       <Card
+        ref={nodeRef}
         id={node.id}
         sx={{
           cursor: "grab",
